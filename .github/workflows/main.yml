@@ -5,7 +5,7 @@ jobs: # Specify what we want to do
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@latest # Latest release or version latest
+        uses: actions/checkout@v3 # release 3 or version 3
       
       - name: Setup Python # Ubuntu does not come with Python pre-installed.
         uses: actions/setup-python@v4
