@@ -6,25 +6,5 @@ jobs: # Specify what we want to do
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3 # release 3 or version 3
-      
-      - name: Setup Python # Ubuntu does not come with Python pre-installed.
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10' # With this we can control which Python version we want to install
-
-      - name: Install Dependencies
-        run: | # | specifies multi-line command
-          python -m pip install --upgrade pip
-          pip install pyyaml
-
       - name: Run Feed Generator
-        run: python feed.py # This generates the podcast.xml file
-
-      - name: Push Repo
-        run: |
-          # Here we need to setup git as if we were setting up a new machine.
-          git config user.name "imraklr"
-          git config user.email "rklsspty777@gmail.com"
-          git add .
-          git commit -m "Modified Feed"
-          git push
+        uses: imraklr/podcast-generator@main # name & branch of the repo you want to run
